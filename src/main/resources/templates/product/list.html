@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="https://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+		<header th:replace="layout/layout :: header">
+		</header>
+	<div class="container-fluid">
+		<h1 th:text="${title}"></h1>
+
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Item code</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>Suppliers</th>
+					<th>State</th>
+					<th>Comments</th>
+					<th>Creator</th>
+					<th>Create at...</th>
+					<th>Options</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="product: ${products}">
+					
+						<td th:text="${product.id}"></td>
+						<td th:text="${product.itemCode}"></td>
+						<td th:text="${product.description}"></td>
+						<td th:text="${product.price} + '€'"></td>
+						<td><span th:each="supplier, iterStat: ${product.suppliers}"
+							th:text="!${iterStat.last} ? ${supplier.name} + ', ': ${supplier.name}"></span>
+						</td>
+						<td th:text="${product.state}"></td>
+						<td th:text="${product.comments}"></td>
+						<td th:text="${product.creator.nick}"></td>
+						<td th:text="${product.createAt}"></td>
+						<td>
+						<form th:action="@{/products/edit}" method="post">
+							<input type="hidden" name="product_id"  th:value="${product.id}"/>
+							<input type="submit" class="btn btn-secondary" value="Edit" >
+						</form> 
+						<a class="btn btn-danger text-light">X</a></td>
+					
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="10"><a class="btn btn-success text-light">Add
+							product</a></td>
+				</tr>
+			</tfoot>
+		</table>
+
+
+	</div>
+	<footer  th:replace="layout/layout :: footer">
+	</footer>
+</body>
+</html>

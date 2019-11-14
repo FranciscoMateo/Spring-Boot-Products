@@ -1,0 +1,30 @@
+.col-md-2.money-panel {
+	display: flex;
+	align-items: center;
+}
+
+.symbol {
+	margin-left: 0.3em;
+	font-weight: 600;
+}
+
+.money-form {
+	text-align: right;
+}
+
+.suppliers-panel {
+	display: flex;
+	flex-direction: column;
+}
+
+.suppliers-list {
+	display: flex;
+    flex-direction: column;
+    padding: 0.75em 0.5em;
+    border: 1px solid #ced4da;
+    border-radius: 0.25em;
+}
+.suppliers-list input {
+	height: 1.25em;
+    width: 1.25em;
+}
