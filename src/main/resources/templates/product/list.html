@@ -27,16 +27,14 @@
 				<tr th:each="product: ${products}">
 					
 						<td th:text="${product.id}"></td>
-						<td th:text="${product.itemCode}"></td>
+						<td>..code item...</td>
 						<td th:text="${product.description}"></td>
-						<td th:text="${product.price} + '€'"></td>
-						<td><span th:each="supplier, iterStat: ${product.suppliers}"
-							th:text="!${iterStat.last} ? ${supplier.name} + ', ': ${supplier.name}"></span>
-						</td>
-						<td th:text="${product.state}"></td>
-						<td th:text="${product.comments}"></td>
-						<td th:text="${product.creator.nick}"></td>
-						<td th:text="${product.createAt}"></td>
+						<td>...price...</td>
+						<td>...suppliers...</span></td>
+						<td>...state...</td>
+						<td>...comments...</td>
+						<td>...creator...</td>
+						<td>...create at...</td>
 						<td>
 						<form th:action="@{/products/edit}" method="post">
 							<input type="hidden" name="product_id"  th:value="${product.id}"/>
@@ -48,7 +46,7 @@
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="10"><a class="btn btn-success text-light">Add
+					<td colspan="10"><a class="btn btn-success text-light" th:href="@{/products/add}">Add
 							product</a></td>
 				</tr>
 			</tfoot>

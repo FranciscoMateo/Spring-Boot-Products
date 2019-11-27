@@ -50,9 +50,6 @@ public class User implements Serializable {
 	@NotEmpty
 	private String password;
 
-	@OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
-	private List<Product> products;
-
 	@NotNull
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
@@ -61,9 +58,6 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public User() {
-		products = new ArrayList<Product>();
-	}
 
 	@PrePersist
 	public void PrePersist() {
@@ -132,18 +126,6 @@ public class User implements Serializable {
 
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
-	}
-
-	public List<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
-
-	public void addProduct(Product product) {
-		products.add(product);
 	}
 
 	public static long getSerialversionuid() {

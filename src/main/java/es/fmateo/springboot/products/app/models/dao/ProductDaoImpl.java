@@ -31,7 +31,11 @@ public class ProductDaoImpl implements IProductDao {
 	@Override
 	@Transactional
 	public void save(Product product) {
-		em.persist(product);
+		if(product.getId() != null && product.getId() > 0) {
+			em.merge(product);
+		} else {
+			em.persist(product);
+		}		
 	}
 
 }
