@@ -46,24 +46,6 @@ public class ProductController {
 		Product product = productDao.getById(product_id);
 		model.addAttribute("title", "Edit");
 		model.addAttribute("product", product);
-		
-		List<Supplier> suppliersList = supplierDao.getAll(); 
-		ArrayList<Object> suppliersChecked = new ArrayList<Object>();
-		
-		for(Supplier supplier: suppliersList) {
-			ArrayList<Object> result = new ArrayList<Object>();
-			boolean checked = false;
-			for(Supplier supplierProduct: product.getSuppliers()) {
-				if(supplier.getId() == supplierProduct.getId()) {
-					checked = true;
-				} 
-			}
-			result.add(supplier);
-			result.add(checked);
-			suppliersChecked.add(result);
-		}
-		
-		model.addAttribute("suppliers", suppliersChecked);
 		return "product/single_product";
 	}
 	

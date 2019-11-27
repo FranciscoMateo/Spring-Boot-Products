@@ -10,7 +10,9 @@
 		<form th:action="@{edit/save_product}" th:object="${product}"
 			method="post">
 			<input type="hidden" th:field="*{id}" />
-
+			<input type="hidden" th:field="*{createAt}" />
+			<input type="hidden" th:field="*{itemCode}" />
+			
 			<div class="form-group row">
 				<label class="col-md-2 col-form-label">Description*</label>
 				<div class="col-md-6">
@@ -34,10 +36,11 @@
 			<div class="form-group row suppliers-panel container-fluid">
 				<div class="suppliers-title">Suppliers...:</div>
 				<div class="suppliers-list col-md-4">
-					<div th:each="supplier: ${suppliers}">
-						 <input type="checkbox" name="suppliers" th:value="${supplier[0].id}" th:checked="${supplier[1]}" />
-						<label th:text="'  ' + ${supplier[0].name}"></label>
-					</div>
+					<ul>
+						<li th:each="supplier, iterStat: ${product.suppliers}">
+							<span th:text="${supplier.name}"></span>
+						</li>
+					</ul>
 				</div>
 			</div>
 			<div class="form-group row">
