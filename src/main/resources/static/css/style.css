@@ -3,6 +3,16 @@
 	align-items: center;
 }
 
+.table td {
+	vertical-align: middle;
+}
+
+.product-options-panel {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
 .symbol {
 	margin-left: 0.3em;
 	font-weight: 600;
@@ -13,18 +23,41 @@
 }
 
 .suppliers-panel {
-	display: flex;
-	flex-direction: column;
+	margin: 0 15px;
+	padding: 0 0.75em;
+	max-width: 216px;
 }
 
-.suppliers-list {
-	display: flex;
-    flex-direction: column;
-    padding: 0.75em 0.5em;
-    border: 1px solid #ced4da;
-    border-radius: 0.25em;
+.suppliers-panel ul {
+	margin: 1em 0;
+	padding: 0;
 }
-.suppliers-list input {
-	height: 1.25em;
-    width: 1.25em;
+
+.suppliers-panel li {
+	display: flex;
+	justify-content: space-between;
+	list-style-type: none;
+	padding: 0.25em;
+	margin: 0.5em 0;
+	background: #e9ecef;
+	border-radius: 5px;
+}
+
+.suppliers-panel .btn-danger {
+	font-size: 0.75em;
+	padding: 0.5em;
+	line-height: 0.75em;
+	cursor: pointer;
+}
+
+.supplier-select-panel {
+	padding: 0.85em 0;
+	border-top: 1px solid #dee2e6;
+}
+
+.supplier-select {
+	margin-bottom: 0.5em;
+}
+.supplier-select-panel .btn-success {
+	cursor: pointer;
 }

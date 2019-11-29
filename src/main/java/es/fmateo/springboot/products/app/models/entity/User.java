@@ -49,6 +49,9 @@ public class User implements Serializable {
 
 	@NotEmpty
 	private String password;
+	
+	@OneToMany(mappedBy = "creator", fetch = FetchType.LAZY) 
+	private List<Product> products; 
 
 	@NotNull
 	@Column(name = "create_at")
@@ -118,6 +121,15 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 
 	public Date getCreateAt() {

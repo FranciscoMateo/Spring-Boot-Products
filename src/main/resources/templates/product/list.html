@@ -3,8 +3,7 @@
 <head th:replace="layout/layout :: head">
 </head>
 <body>
-		<header th:replace="layout/layout :: header">
-		</header>
+	<header th:replace="layout/layout :: header"> </header>
 	<div class="container-fluid">
 		<h1 th:text="${title}"></h1>
 
@@ -12,7 +11,6 @@
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th>Item code</th>
 					<th>Description</th>
 					<th>Price</th>
 					<th>Suppliers</th>
@@ -25,36 +23,37 @@
 			</thead>
 			<tbody>
 				<tr th:each="product: ${products}">
-					
-						<td th:text="${product.id}"></td>
-						<td>..code item...</td>
-						<td th:text="${product.description}"></td>
-						<td>...price...</td>
-						<td>...suppliers...</span></td>
-						<td>...state...</td>
-						<td>...comments...</td>
-						<td>...creator...</td>
-						<td>...create at...</td>
-						<td>
-						<form th:action="@{/products/edit}" method="post">
-							<input type="hidden" name="product_id"  th:value="${product.id}"/>
-							<input type="submit" class="btn btn-secondary" value="Edit" >
-						</form> 
-						<a class="btn btn-danger text-light">X</a></td>
-					
+
+					<td th:text="${product.id}"></td>
+					<td th:text="${product.description}"></td>
+					<td th:text="${product.price} + €"></td>
+					<td><span th:each="supplier, iterStat: ${product.suppliers}"
+						th:text="!${iterStat.last} ? ${supplier.name} + ', ': ${supplier.name}"></span></span></td>
+					<td th:text="${product.state}"></td>
+					<td th:text="${product.comments}"></td>
+					<td th:text="${product.creator.nick}"></td>
+					<td th:text="${product.createAt}"></td>
+					<td class="product-options">
+						<div class="product-options-panel">
+							<form th:action="@{/products/edit}" method="post">
+								<input type="hidden" name="product_id" th:value="${product.id}" />
+								<input type="submit" class="btn btn-secondary" value="Edit">
+							</form>
+							<a class="btn btn-danger text-light">X</a>
+						</div>
+					</td>
 				</tr>
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="10"><a class="btn btn-success text-light" th:href="@{/products/add}">Add
-							product</a></td>
+					<td colspan="10"><a class="btn btn-success text-light"
+						th:href="@{/products/add}">Add product</a></td>
 				</tr>
 			</tfoot>
 		</table>
 
 
 	</div>
-	<footer  th:replace="layout/layout :: footer">
-	</footer>
+	<footer th:replace="layout/layout :: footer"> </footer>
 </body>
 </html>

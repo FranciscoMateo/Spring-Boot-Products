@@ -6,12 +6,13 @@
 	<header th:replace="layout/layout :: header"></header>
 	<div class="container-fluid">
 		<h1 th:text="${title}"></h1>
-
+		<span th:text="${product.id} ? 'ID: ' + ${product.id}: ''"></span>
 		<form th:action="@{edit/save_product}" th:object="${product}"
 			method="post">
-			<input type="hidden" th:field="*{id}" />
-			
-			
+			<input type="hidden" th:field="*{id}" /> <input type="hidden"
+				th:field="*{createAt}" /> <input type="hidden"
+				th:field="*{creator.id}" />
+
 			<div class="form-group row">
 				<label class="col-md-2 col-form-label">Description*</label>
 				<div class="col-md-6">
@@ -23,13 +24,61 @@
 				</div>
 			</div>
 			<div class="form-group row">
+				<label class="col-md-2 col-form-label">Price*</label>
+				<div class="col-md-2 money-panel">
+					<input type="text" th:field="*{price}"
+						class="form-control money-form"
+						th:errorclass="'form-control alert-danger'" /><span
+						class="symbol">€</span> <small class="form-text text-danger"
+						th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-md-2 col-form-label">Suppliers...</label>
+				<div class="col-md-2 border rounded suppliers-panel">
+					<ul>
+						<li class="d-none supplier-template"><input type="hidden"
+							name="supp[]" value="" /> <span></span> <a
+							class="btn btn-danger text-light">X</a></li>
+						<li th:each="supplier, iterStat: ${product.suppliers}"><input
+							type="hidden" name="supp[]" th:value="${supplier.id}" /> <span
+							th:text="${supplier.name}"></span> <a
+							class="btn btn-danger text-light">X</a></li>
+					</ul>
+					<div class="supplier-select-panel">
+						<select class="form-control supplier-select">
+							<option value="">Choose supplier</option>							
+							<option th:each="supplier, iterStat: ${supplierList}" th:value="${supplier.id}" th:text="${supplier.name}"/>
+						</select> <a class="btn btn-success text-light form-control disabled">
+							Add supplier</a>
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-md-2 col-form-label">State</label>
+				<div class="col-md-2">
+					<select class="form-control" th:field="*{state}">
+						<option th:value="active" th:text="active"></option>
+						<option th:value="deactive" th:text="deactive"></option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-md-2 col-form-label">Comments</label>
+				<div class="col-md-6">
+					<input type="text" th:field="*{comments}" class="form-control"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('comments')}" th:errors="*{comments}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
 				<div class="col-md-6">
 					<input type="submit" value="Save" class="btn btn-primary" />
 				</div>
 			</div>
 		</form>
 	</div>
-
 
 	<footer th:replace="layout/layout :: footer"> </footer>
 </body>
