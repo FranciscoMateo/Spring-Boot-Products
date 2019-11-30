@@ -114,6 +114,14 @@ public class Product implements Serializable {
 		this.creator = creator;
 	}
 
+	public List<ReducedPrice> getReducedPrices() {
+		return reducedPrices;
+	}
+
+	public void setReducedPrices(List<ReducedPrice> reducedPrices) {
+		this.reducedPrices = reducedPrices;
+	}
+
 	public Date getCreateAt() {
 		return createAt;
 	}

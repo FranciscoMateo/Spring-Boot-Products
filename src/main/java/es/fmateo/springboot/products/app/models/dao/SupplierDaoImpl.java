@@ -25,7 +25,6 @@ public class SupplierDaoImpl implements ISupplierDao {
 
 	@Transactional(readOnly = true)
 	public Supplier getById(Integer id) {
-		System.out.println(id);
 		return (Supplier) em.createQuery("from Supplier where id =" + id).getSingleResult();		
 	}
 

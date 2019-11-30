@@ -13,6 +13,8 @@ INSERT INTO products (id, description, price, state, comments, creator_id, creat
 INSERT INTO products (id, description, price, state, comments, creator_id, create_at) VALUES (2, 'Armario con 3 puertas, blanco', 25, 'inactive', '', 1, '2017-08-28');
 
 INSERT INTO reduced_prices (id, product_id, reduced_price, start_date, end_date) VALUES (1, 2, 15, '2019-12-1', '2019-12-2');
+INSERT INTO reduced_prices (id, product_id, reduced_price, start_date, end_date) VALUES (2, 2, 10, '2019-12-3', '2019-12-10');
+
 
 INSERT INTO products_suppliers (product_id, supplier_id) VALUES (1, 1); 
 INSERT INTO products_suppliers (product_id, supplier_id) VALUES (1, 3); 

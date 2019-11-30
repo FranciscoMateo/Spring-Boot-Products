@@ -18,6 +18,64 @@
 	font-weight: 600;
 }
 
+.reduced-price-button a {
+	cursor: pointer;
+}
+
+.reduced-prices-panel {
+	margin-left: 17.666%;
+	max-width: 47.666%;
+}
+
+.reduced-prices-titles {
+	margin: 1em 0;
+}
+
+.reduced-prices-titles b {
+	padding: 0;
+}
+
+.reduced-prices-titles .start-end-title {
+	margin-left: 10px;
+}
+
+.reduced-price-item {
+	padding: 0.5em 0;
+}
+
+.reduced-price-item:nth-child(2) {
+	border-top: 1px solid #dee2e6;
+}
+
+.reduced-price-item:nth-child(even) {
+	background-color: rgba(0, 0, 0, .05);
+}
+
+.reduced-prices-panel .money-panel {
+	display: flex;
+	align-items: center;
+}
+
+.reduced-price-remove {
+	display: flex; flex-direction : row;
+	justify-content: flex-end;
+	align-items: center;
+	flex-direction: row;
+}
+
+.reduced-price-remove .btn {
+	display: flex;
+	font-size: 0.75em;
+	max-height: 35px;
+	align-items: center;
+	cursor: pointer;
+}
+
+.reduced-prices-add {
+	padding: 1em;
+	border-top: 1px solid #dee2e6;
+}
+
 .money-form {
 	text-align: right;
 }
@@ -58,6 +116,7 @@
 .supplier-select {
 	margin-bottom: 0.5em;
 }
+
 .supplier-select-panel .btn-success {
 	cursor: pointer;
 }
